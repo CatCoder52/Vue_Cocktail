@@ -64,7 +64,7 @@
       <cocktail-names-modal :names="filteredResults" />
       <template slot="header">
         <h2 class="text-center">
-          Cocktail Names
+          Cocktails by {{ cocktailSearchType }}
         </h2>
       </template>
       <template slot="footer">
@@ -102,6 +102,7 @@ export default {
       selectedCategory: null,
       isCockTailListModalOpened: false,
       isCockTailNamesModalOpened: false,
+      cocktailSearchType: null,
     };
   },
   mounted() {
@@ -122,38 +123,45 @@ export default {
       const filteredData = await this.$http.get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${this.selectedCategory}`);
       this.isCockTailNamesModalOpened = true;
       this.filteredResults = filteredData.drinks;
+      this.cocktailSearchType = 'Category';
     },
     async filterByGlass() {
       const filteredData = await this.$http.get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=${this.selectedGlass}`);
       this.isCockTailNamesModalOpened = true;
       this.filteredResults = filteredData.drinks;
+      this.cocktailSearchType = 'Glass';
     },
     async filterByIngredient() {
       const filteredData = await this.$http.get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${this.selectedIngredient}`);
       this.isCockTailNamesModalOpened = true;
       this.filteredResults = filteredData.drinks;
+      this.cocktailSearchType = 'Ingredients';
     },
     async getCategories() {
       const categoryData = await this.$http.get('json/v1/1/list.php?c=list');
       if (categoryData) {
         this.categories = categoryData.drinks;
+        this.selectedCategory = this.categories[0].strCategory;
       }
     },
     async getGlasses() {
       const glassData = await this.$http.get('json/v1/1/list.php?g=list');
       if (glassData) {
         this.glasses = glassData.drinks;
+        this.selectedGlass = this.glasses[0].strGlass;
       }
     },
     async getIngredients() {
       const ingredientData = await this.$http.get('json/v1/1/list.php?i=list');
       if (ingredientData) {
         this.ingredients = ingredientData.drinks;
+        this.selectedIngredient = this.ingredients[0].strIngredient1;
       }
     },
     clearSearchResults() {
       this.isDataLoaded = false;
       this.cocktails = null;
+      this.cocktailSearchType = null;
       this.search = '';
     },
   },

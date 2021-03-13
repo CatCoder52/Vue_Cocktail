@@ -1,5 +1,5 @@
 <template>
-  <div class="container h-auto overflow-y-auto">
+  <div class="container overflow-y-auto">
     <div v-for="cocktail in names" :key="cocktail.strDrink" class="flex justify-between items-center p-2 border-b border-gray-600 my-2">
       <p class="font-semibold text-blue-800">
         {{ cocktail.strDrink }}
@@ -24,3 +24,8 @@ export default {
   },
 };
 </script>
+<style scoped>
+.container {
+  max-height: 500px;
+}
+</style>
