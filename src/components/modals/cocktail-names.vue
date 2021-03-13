@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
-    <div v-for="cocktail in names" :key="cocktail.strDrink" class="flex justify-between p-2">
-      <p>
+  <div class="container h-auto overflow-y-auto">
+    <div v-for="cocktail in names" :key="cocktail.strDrink" class="flex justify-between items-center p-2 border-b border-gray-600 my-2">
+      <p class="font-semibold text-blue-800">
         {{ cocktail.strDrink }}
       </p>
       <img :src="cocktail.strDrinkThumb" alt="" height="50" width="70" class="cursor-pointer rounded shadow-md" @click.prevent="changeUrl(cocktail.idDrink)">
