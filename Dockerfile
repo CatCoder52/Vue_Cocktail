@@ -1,18 +1,26 @@
-FROM node:lts-alpine as bugildstage
+FROM node:14-alpine as builder
+
 WORKDIR /usr/src/app
+
 COPY package* ./
-RUN apk update \
-  && apk upgrade \
-  && apk --no-cache add --virtual builds-deps build-base python \
-  && npm ci \
-  && apk del builds-deps build-base python \
-  && rm -rf /var/cache/apk/* \
-  && npm cache clean --force
+
+RUN npm install
+
 COPY . .
+
+# Build the project
 RUN npm run build
 
 FROM nginx:stable-alpine
-COPY --from=bugildstage /usr/src/app/dist /usr/share/nginx/html
+
+# Copy conf file  
 COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Remove default nginx index page
+RUN rm -rf /usr/share/nginx/html/*
+
+# Copy build files from stage 1
+COPY --from=builder /usr/src/app/dist /usr/share/nginx/html
+
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
