@@ -30,7 +30,19 @@ npm run build
 ```
 npm run lint
 ```
+
+### Deployment to Heroku
+
+This project was deployed on Heroku on 14th November 2021. Deployment through Heroku is a smooth process which required installation of express and serve-static libraries for Node.
+Then, I added a 'postbuild' script and a 'start' script to build production files and serve it through an express server.
+Below is the app link.
+
+https://vue-cocktail-db.herokuapp.com/cocktails/
+
+
 ## Project Screenshots
+
+
 
 Please find some of the screenshots of the application. First screenshot depicts the cocktails page of the application with a search form where you can search cocktails through name, category, glass and ingredients.
 
