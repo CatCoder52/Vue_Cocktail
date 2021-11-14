@@ -4,14 +4,17 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "postinstall": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "start": "node server.js"
   },
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "express": "^4.17.1",
     "lodash": "^4.17.20",
     "mitt": "^2.1.0",
+    "serve-static": "^1.14.1",
     "tailwindcss": "^2.0.2",
     "vee-validate": "^3.4.5",
     "vue": "^2.6.11",
