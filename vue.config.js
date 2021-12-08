@@ -11,5 +11,12 @@ module.exports = {
   devServer: {
     disableHostCheck: true,
     useLocalIp: false,
+    proxy: {
+      '/api': {
+        target: 'https://www.thecocktaildb.com',
+        // target: 'http://localhost:9000',
+        changeOrigin: true,
+      },
+    },
   },
 };

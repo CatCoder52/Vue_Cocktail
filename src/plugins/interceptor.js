@@ -3,7 +3,7 @@ import events from './events';
 
 let baseURL = process.env.VUE_APP_API_URL;
 if (!baseURL) {
-  baseURL = 'https://www.thecocktaildb.com/api';
+  baseURL = '/api';
 }
 
 function getErrorMessage(response) {
