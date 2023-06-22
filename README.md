@@ -12,9 +12,7 @@ This app would have information related to tons of delicious cocktails around th
 * [TailwindCSS](https://tailwindcss.com/)
 * [Vue-tailwind](https://www.vue-tailwind.com/)
 
-## Authors
 
-* **Amit Prafulla (APFirebolt)** - (http://amitprafull.com/)
 ## Project setup
 This should be a piece of cake for you if you have worked under npm environment before. Simply initialize an empty project using 'npm init' and then install packages. Simply clone the project and install dependencies.
 ```
